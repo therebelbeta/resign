@@ -13,57 +13,57 @@
 		<div class="form-group">
 			<label for="name" class="col-sm-2 control-label">Full Name</label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control" id="name" placeholder="John Jacob Doe">
+				<input type="text" class="form-control" id="name" ng-model="name" placeholder="John Jacob Doe">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="birth" class="col-sm-2 control-label">Date of Birth</label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control" id="birth" placeholder="xx/xx/xx">
+				<input type="text" class="form-control" id="birth" ng-model="birth" placeholder="xx/xx/xx">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="membership" class="col-sm-2 control-label">Membership Number</label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control" id="membership" placeholder="(Found online in your LDS.org account or temple recommend)">
+				<input type="text" class="form-control" id="membership" ng-model="membership" placeholder="(Found online in your LDS.org account or temple recommend)">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="state" class="col-sm-2 control-label">Home State</label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control" id="state" placeholder="Utah">
+				<input type="text" class="form-control" id="state" ng-model="state" placeholder="Utah">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="mailaddress" class="col-sm-2 control-label">Mail Address</label>
 			<div class="col-sm-6">
-				<textarea id="mailaddress" class="form-control" rows="3"></textarea>
+				<textarea id="mailaddress" class="form-control" rows="3" ng-model="mailaddress"></textarea>
 			</div>
 		</div>
 		<h2>Bishop</h2>
 		<div class="form-group">
 			<label for="bishopname" class="col-sm-2 control-label">Name of Bishop</label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control" id="bishopname" placeholder="John Doe">
+				<input type="text" class="form-control" id="bishopname" ng-model="bishopname" placeholder="John Doe">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="bishopmailaddress" class="col-sm-2 control-label">Bishop's Mail Address</label>
 			<div class="col-sm-6">
-				<textarea id="bishopmailaddress" class="form-control" rows="3"></textarea>
+				<textarea id="bishopmailaddress" class="form-control" rows="3" ng-model="bishopmailaddress"></textarea>
 			</div>
 		</div>
 		<h2>Stake President</h2>
 		<div class="form-group">
 			<label for="stakepresname" class="col-sm-2 control-label">Name of Stake President</label>
 			<div class="col-sm-6">
-				<input type="text" class="form-control" id="stakepresname" placeholder="John Doe">
+				<input type="text" class="form-control" id="stakepresname" ng-model="stakepresname" placeholder="John Doe">
 			</div>
 		</div>
 		<div class="form-group">
 			<label for="stakepresmailaddress" class="col-sm-2 control-label">Stake President's Mail Address</label>
 			<div class="col-sm-6">
-				<textarea id="stakepresmailaddress" class="form-control" rows="3"></textarea>
+				<textarea id="stakepresmailaddress" class="form-control" rows="3" ng-model="stakepresmailaddress"></textarea>
 			</div>
 		</div>
 		<h2>Letter Body</h2>
@@ -74,11 +74,37 @@
 		</p>
 		<div class="form-group">
 			<div class="col-sm-8">
-				<textarea id="letterbody" class="form-control" rows="40"></textarea>
+				<textarea id="letterbody" class="form-control" rows="40" ng-model="letterbody"></textarea>
 			</div>
 		</div>
 		<div class="col-sm-offset-2 col-sm-10">
 			<button class="btn btn-default">Print Resignation Letter</button>
 		</div>
 	</form>
+	<div class="printhtml">
+		<p class="sender">
+			{{date}}
+			{{name}}<br/>
+			{{mailaddresslist}}<br/>
+		</p>
+		<p class="membershiprecords">
+			LDS Membership records<br/>
+			Address
+		</p>
+		<p class="bishop">
+			{{bishopname}}<br/>
+			{{bishopmailaddresslist}}
+		</p>
+		<p class="stakepres">
+			{{stakepresname}}<br/>
+			{{stakepresmailaddresslist}}
+		</p>
+		<p ng-repeat="paragraph in letterbodyHTML">{{paragraph}}</p>
+		<p class="info">
+			{{name}}<br/>
+			Date of Birth: {{birth}}<br/>
+			<span ng-show="membership!=''">Membership Number: {{membership}}<br/></span>	
+			{{mailaddresslist}}
+		</p>
+	</div>
 </div>
